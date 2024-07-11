@@ -1,0 +1,718 @@
+// Google fonts area start here ***
+// Title fonts ***
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+// Common fonts ***
+@import url("https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300..700&display=swap");
+// Google fonts area end here ***
+
+// Variable area start here ***
+// Fonts***
+$title-font: "Lato", sans-serif;
+$common-font: "Spline Sans", sans-serif;
+// Color***
+$primary-color: #ff8008;
+$secondary-color: #181818;
+$title-color: #181818;
+$text-color: #4d4d4d;
+$black: #000000;
+$white: #ffffff;
+// Settings***
+$border: #1513141a;
+$transition: all 0.4s;
+$shadow: 2px 2px 15px rgba(115, 115, 115, 0.2);
+$hover-shadow: 2px 2px 15px rgba(115, 115, 115, 0.5);
+// Variable area end here ***
+
+* {
+	margin: 0;
+	padding: 0;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	outline: none;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: $common-font;
+	color: $text-color;
+	background-color: $white;
+	line-height: 28px;
+	font-weight: 400;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 0;
+	padding: 0;
+	font-weight: 700;
+	color: $title-color;
+	font-family: $title-font;
+}
+
+p {
+	margin: 0;
+	padding: 0;
+	line-height: 28px;
+	font-size: 16px;
+}
+
+input {
+	border: none;
+	outline: none;
+}
+
+span {
+	display: inline-block;
+	color: $text-color;
+}
+
+a {
+	text-decoration: none;
+	display: inline-block;
+	color: $title-color;
+	transition: $transition;
+}
+
+a:hover {
+	color: $title-color;
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+	text-decoration: none;
+}
+li {
+	list-style: none;
+}
+
+button {
+	border: none;
+	background-color: transparent;
+	transition: $transition;
+}
+
+img {
+	transition: $transition;
+}
+
+::placeholder {
+	color: $text-color;
+}
+
+::selection {
+	color: $white;
+	background-color: $primary-color;
+}
+// typography area end here ***
+
+// Custom class area start here ***
+.bor-top {
+	border-top: 1px solid $border;
+}
+.bor-bottom {
+	border-bottom: 1px solid $border;
+}
+.bor-left {
+	border-left: 1px solid $border;
+}
+.bor-right {
+	border-right: 1px solid $border;
+}
+.sub-bg {
+	background-color: rgba(255, 128, 8, 0.03);
+}
+// Margin Top ***
+@for $i from 1 through 40 {
+	.mt-#{5 * $i} {
+		margin-top: 5px * $i;
+	}
+}
+/*-- Margin Bottom --*/
+@for $i from 1 through 40 {
+	.mb-#{5 * $i} {
+		margin-bottom: 5px * $i;
+	}
+}
+// Margin Left ***
+@for $i from 1 through 40 {
+	.ml-#{5 * $i} {
+		margin-left: 5px * $i;
+	}
+}
+
+// Margin Right***
+@for $i from 1 through 40 {
+	.mr-#{5 * $i} {
+		margin-right: 5px * $i;
+	}
+}
+
+// Padding Top ***
+@for $i from 1 through 40 {
+	.pt-#{5 * $i} {
+		padding-top: 5px * $i;
+	}
+}
+
+// Padding Bottom ***
+@for $i from 1 through 40 {
+	.pb-#{5 * $i} {
+		padding-bottom: 5px * $i;
+	}
+}
+
+//  Padding Left ***
+@for $i from 1 through 40 {
+	.pl-#{5 * $i} {
+		padding-left: 5px * $i;
+	}
+}
+
+// Padding Right ***
+@for $i from 1 through 40 {
+	.pr-#{5 * $i} {
+		padding-right: 5px * $i;
+	}
+}
+
+// Mixins area start here ***
+@mixin justify {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+@mixin justify-wrp {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+}
+@mixin flex {
+	display: flex;
+	align-items: center;
+}
+@mixin flex-wrp {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+}
+@mixin center {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+@mixin radius($width, $height, $line-hight) {
+	width: $width;
+	height: $height;
+	line-height: $line-hight;
+	text-align: center;
+	border-radius: 50%;
+	transition: var(--transition);
+}
+@mixin bg-image {
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+// Breckpoint ***
+@mixin breakpoint($point) {
+	@if $point==xsmall {
+		@media (min-width: 450px) {
+			@content;
+		}
+	} @else if $point==max-xxsmall {
+		@media (max-width: 450px) {
+			@content;
+		}
+	}
+	@if $point==xxs {
+		@media (min-width: 470px) {
+			@content;
+		}
+	} @else if $point==max-xxs {
+		@media (max-width: 470px) {
+			@content;
+		}
+	}
+	@if $point==xs {
+		@media (min-width: 500px) {
+			@content;
+		}
+	} @else if $point==max-xs {
+		@media (max-width: 500px) {
+			@content;
+		}
+	}
+	@if $point==sm {
+		@media (min-width: 576px) {
+			@content;
+		}
+	} @else if $point==max-sm {
+		@media (max-width: 575px) {
+			@content;
+		}
+	} @else if $point==md {
+		@media (min-width: 768px) {
+			@content;
+		}
+	} @else if $point==max-md {
+		@media (max-width: 767px) {
+			@content;
+		}
+	} @else if $point==lg {
+		@media (min-width: 992px) {
+			@content;
+		}
+	} @else if $point==max-lg {
+		@media (max-width: 991px) {
+			@content;
+		}
+	} @else if $point==xl {
+		@media (min-width: 1200px) {
+			@content;
+		}
+	} @else if $point==max-xl {
+		@media (max-width: 1199px) {
+			@content;
+		}
+	} @else if $point==xxl {
+		@media (min-width: 1400px) {
+			@content;
+		}
+	} @else if $point==max-xxl {
+		@media (max-width: 1399px) {
+			@content;
+		}
+	} @else if $point==xxxl {
+		@media (min-width: 1600px) {
+			@content;
+		}
+	} @else if $point==max-xxxl {
+		@media (max-width: 1600px) {
+			@content;
+		}
+	} @else if $point==x4l {
+		@media (min-width: 1800px) {
+			@content;
+		}
+	} @else if $point==max-x4l {
+		@media (max-width: 1800px) {
+			@content;
+		}
+	}
+}
+
+// Mixins area end here ***
+
+// Button area start here ***
+
+.button_su {
+	border-radius: 12px;
+	overflow: hidden;
+	position: relative;
+	display: inline-block;
+	background-color: $primary-color;
+	&:hover {
+		.button_text_container {
+			display: inline-block;
+			i {
+				padding-left: 10px;
+			}
+		}
+	}
+}
+
+.su_button_circle {
+	border-radius: 1000px;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 0px;
+	height: 0px;
+	margin-left: 0px;
+	margin-top: 0px;
+	pointer-events: none;
+}
+
+.button_su_inner {
+	display: inline-block;
+	font-size: 16px;
+	font-weight: normal;
+	text-align: center;
+	transition: 400ms;
+	text-decoration: none;
+	padding: 12px 28px;
+	z-index: 100;
+}
+
+.button_text_container {
+	position: relative;
+	z-index: 100;
+	font-weight: 500;
+	text-transform: uppercase;
+	color: $white;
+	font-size: 16px;
+	letter-spacing: 1px;
+	i {
+		transition: $transition;
+		padding-left: 2px;
+	}
+}
+
+.explode-circle {
+	animation: explode 0.5s forwards;
+}
+
+.desplode-circle {
+	animation: desplode 0.5s forwards;
+}
+
+@keyframes explode {
+	0% {
+		width: 0px;
+		height: 0px;
+		margin-left: 0px;
+		margin-top: 0px;
+		background-color: rgba(42, 53, 80, 0.2);
+	}
+	100% {
+		width: 400px;
+		height: 400px;
+		margin-left: -200px;
+		margin-top: -200px;
+		background-color: $title-color;
+	}
+}
+
+@keyframes desplode {
+	0% {
+		width: 400px;
+		height: 400px;
+		margin-left: -200px;
+		margin-top: -200px;
+		background-color: $title-color;
+	}
+	100% {
+		width: 0px;
+		height: 0px;
+		margin-left: 0px;
+		margin-top: 0px;
+		background-color: rgba(233, 109, 19, 0.8);
+	}
+}
+// Button area end here ***
+
+// Brand area start here ***
+.brand {
+	&-area {
+		overflow: hidden;
+	}
+	&__image {
+		img {
+			width: 100%;
+		}
+	}
+}
+// Brand area end here ***
+
+// Fanfact area start here ***
+.funfact {
+	&-area {
+		overflow: hidden;
+	}
+	&__icon {
+		img {
+			width: 60px;
+		}
+		margin-bottom: 10px;
+	}
+	&__item {
+		text-align: center;
+		padding: 20px;
+		border-radius: 12px;
+		box-shadow: $shadow;
+		transition: $transition;
+		&:hover {
+			box-shadow: $hover-shadow;
+			transform: translateY(-5px);
+		}
+		h2 {
+			font-weight: 700;
+			span {
+				color: $title-color;
+			}
+			margin-bottom: 5px;
+		}
+		p {
+			font-size: 18px;
+		}
+	}
+}
+// Fanfact area end here ***
+
+// Why Choose Us area start here ***
+.choose {
+	&-area {
+		overflow: hidden;
+	}
+	&__image {
+		img {
+			width: 100%;
+		}
+	}
+	&__content {
+		.number {
+			font-size: 50px;
+			line-height: 60px;
+			font-weight: 500;
+			-webkit-text-stroke: 2px $primary-color;
+			-webkit-text-fill-color: white;
+			opacity: 0.3;
+			display: inline-block;
+			margin-bottom: 10px;
+			font-family: $title-font;
+			letter-spacing: -2px;
+			transition: $transition;
+		}
+		h2 {
+			margin-bottom: 10px;
+		}
+		p {
+			text-align: justify;
+		}
+		&:hover {
+			.number {
+				-webkit-text-fill-color: $primary-color;
+			}
+		}
+	}
+}
+// Why Choose Us area end here ***
+
+// Pricing area start here ***
+.pricing {
+	&-area {
+		overflow: hidden;
+		position: relative;
+		z-index: 1;
+	}
+	&__tab {
+		.nav-tabs {
+			border-bottom: 0;
+			display: flex;
+			justify-content: center;
+			.nav-link {
+				font-size: 18px;
+				font-weight: 600;
+				text-transform: capitalize;
+				border: 0;
+				border-radius: 0;
+				padding: 7px 56px;
+				position: relative;
+				background: transparent;
+				z-index: 2;
+				color: $title-color;
+				letter-spacing: 0.2px;
+				margin-bottom: 0;
+				&::before {
+					position: absolute;
+					content: "";
+					right: 0px;
+					top: 50%;
+					transform: translateY(-50%) translateX(50%);
+					background: $primary-color;
+					width: 75px;
+					height: 32px;
+					border-radius: 20px;
+					border: 1px solid $primary-color;
+				}
+				&::after {
+					position: absolute;
+					content: "";
+					right: -33px;
+					top: 50%;
+					transform: translateY(-50%);
+					width: 24px;
+					height: 24px;
+					border-radius: 50%;
+					background: $white;
+					z-index: 1;
+				}
+				&:first-child {
+					padding-left: 0;
+				}
+				&:last-child {
+					padding-right: 0;
+					&::after {
+						display: none;
+					}
+					&::before {
+						display: none;
+					}
+				}
+				&.active {
+					color: $primary-color;
+					&::after {
+						right: 8px;
+					}
+				}
+			}
+		}
+	}
+	&-two {
+		&-area {
+			overflow: hidden;
+		}
+		&__tab {
+			@extend.pricing__tab;
+			position: relative;
+			.price-save {
+				position: absolute;
+				top: -50px;
+				right: -67px;
+			}
+			.nav-tabs {
+				.nav-link {
+					&::before {
+						background: $primary-color;
+						border: 1px solid $primary-color;
+					}
+					&.active {
+						color: $title-color;
+					}
+				}
+			}
+		}
+		&__item {
+			padding: 40px;
+			border: none;
+			border-radius: 32px;
+			position: relative;
+			overflow: hidden;
+			box-shadow: $shadow;
+			@include breakpoint(max-sm) {
+				padding: 30px 20px;
+			}
+			&::after {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 3px;
+				content: "";
+				background: linear-gradient(
+					90deg,
+					rgba(37, 110, 86, 0) 0%,
+					rgba(255, 128, 8, 0.5) 50.36%,
+					rgba(37, 110, 86, 0) 100%
+				);
+			}
+
+			.pricing-head {
+				text-align: center;
+				h4 {
+					font-size: 28px;
+					line-height: 40px;
+					font-weight: 600;
+				}
+				h2 {
+					font-size: 32px;
+					line-height: 42px;
+					font-weight: 600;
+					@include flex;
+					justify-content: center;
+					span {
+						font-size: 16px !important;
+						line-height: 28px;
+						color: $text-color !important;
+						margin-left: 10px;
+					}
+				}
+				p {
+					font-size: 16px;
+					line-height: 28px;
+					margin-top: 10px;
+				}
+			}
+			ul {
+				li {
+					font-size: 16px;
+					&:not(:last-child) {
+						margin-bottom: 5px;
+					}
+					i {
+						color: #37d284;
+						margin-right: 8px;
+						font-size: 14px;
+					}
+					&.disabled {
+						opacity: 0.7;
+						i {
+							color: $text-color;
+						}
+					}
+				}
+			}
+			.btn-one {
+				border: 1px solid rgba(255, 128, 8, 0.5);
+				font-size: 16px;
+				font-family: $title-font;
+				text-transform: uppercase;
+				border-radius: 100px;
+				padding: 8px;
+				// &.active {
+				// 	background-color: $primary-color;
+				// 	color: $title-color;
+				// }
+				&:hover {
+					background-color: $primary-color;
+					color: $white;
+				}
+			}
+		}
+	}
+
+	&__item {
+		&-active {
+			box-shadow: $hover-shadow;
+			transform: translateY(-20px) scale(1.05);
+		}
+	}
+}
+// Pricing area end here ***
+
+// Feature area start here ***
+.feature {
+	&-area {
+		overflow: hidden;
+	}
+	&__item {
+		padding-top: 20px;
+		img {
+			width: 50px;
+			margin-bottom: 10px;
+		}
+		h3 {
+			font-size: 24px;
+			margin: 10px 0;
+		}
+		p {
+			font-size: 18px;
+			line-height: 30px;
+		}
+		&:hover {
+			.icon {
+				text-align: center;
+			}
+		}
+	}
+}
+// Feature area end here ***
